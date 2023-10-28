@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <svg width="78" height="55" viewBox="0 0 78 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8.99999C3 5.68629 5.68629 3 9 3H14.7C19.0078 3 22.5 7.87509 22.5 13.8889V52C22.5 47.4897 19.8809 43.8333 16.65 43.8333H9C5.6863 43.8333 3 41.147 3 37.8333V8.99999Z" fill="#188E40" stroke="black" stroke-width="5.57248" stroke-linejoin="round"/>
+                    <path d="M42 8.99999C42 5.68629 39.3137 3 36 3H30.3C25.9922 3 22.5 7.87509 22.5 13.8889V52C22.5 47.4897 25.1191 43.8333 28.35 43.8333H36C39.3137 43.8333 42 41.147 42 37.8333V8.99999Z" fill="#188E40" stroke="black" stroke-width="5.57248" stroke-linejoin="round"/>
+                    <path d="M47 3H69.9091L55.9091 20.15H75L44.4545 52L50.8182 28.725H33L47 3Z" fill="#2F88FF" stroke="black" stroke-width="5.57248" stroke-linejoin="round"/>
+                    </svg>
+                    
+            </div>
+            <div class="title">Fast reader</div>
+            <div class="tgl" id="toggleButton"><svg class="tgl"  width="57" height="29" viewBox="0 0 57 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12.5979 26.9731H44.4995C50.3525 26.9731 55.0974 21.3885 55.0974 14.4996C55.0974 7.61074 50.3525 2.02612 44.4995 2.02612H12.5979C6.74489 2.02612 2 7.61074 2 14.4996C2 21.3886 6.74478 26.9731 12.5979 26.9731Z" fill="#D0CFCE"/>
+                <path d="M44.477 27C50.3425 27 55.0974 21.4036 55.0974 14.5C55.0974 7.59644 50.3425 2 44.477 2C38.6115 2 33.8565 7.59644 33.8565 14.5C33.8565 21.4036 38.6115 27 44.477 27Z" fill="#188E40"/>
+                <path d="M37.0402 23.3388C41.1878 28.2204 47.9123 28.2204 52.0598 23.3388C56.2073 18.4573 56.2073 10.5427 52.0598 5.66116" fill="#5C9E31"/>
+                <path d="M12.5979 26.9731H44.4995C50.3525 26.9731 55.0974 21.3885 55.0974 14.4996C55.0974 7.61074 50.3525 2.02612 44.4995 2.02612H12.5979C6.74489 2.02612 2 7.61074 2 14.4996C2 21.3886 6.74478 26.9731 12.5979 26.9731Z" stroke="black" stroke-width="3.16247" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M44.477 27C50.3425 27 55.0974 21.4036 55.0974 14.5C55.0974 7.59644 50.3425 2 44.477 2C38.6115 2 33.8565 7.59644 33.8565 14.5C33.8565 21.4036 38.6115 27 44.477 27Z" stroke="black" stroke-width="3.16247" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M37.0402 23.3388C41.1878 28.2204 47.9123 28.2204 52.0598 23.3388C56.2073 18.4573 56.2073 10.5427 52.0598 5.66116" stroke="black" stroke-width="3.16247" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                </div>
+        </div>
+         <div class="box-info">
+            <input type="text" name=""  placeholder="Вставте сюда текст вашей книги" class="inpt" id="textInput">
+            <input type="file" id="fileInput" accept=".txt" style="display: none">
+            <button id="loadButton">Загрузить текст из файла  TXT</button>
+          
+            <div class="speed">
+                <p> Задайте скорость</p>
+                <input type="range" name="" id="speedRange" min="1" max="10" value="5" >
+            </div>
+            <button id="startButton" onclick="startReading()">Начать</button>
+
+        </div>
+        
+        <div id="textContainer"></div>
+        <button id="stopButton" onclick="stopReading()" style="display: none;">Stop</button>
+
+    </div>
+
+    <script src="app.js">
+        
+    </script>
+</body>
+</html>
