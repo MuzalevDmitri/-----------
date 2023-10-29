@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.12.305/pdf.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -32,6 +33,7 @@
             <input type="text" name=""  placeholder="Вставте сюда текст вашей книги" class="inpt" id="textInput">
             <input type="file" id="fileInput" accept=".txt" style="display: none">
             <button id="loadButton">Загрузить текст из файла  TXT</button>
+            
           
             <div class="speed">
                 <p> Задайте скорость</p>
@@ -44,7 +46,10 @@
         <div id="textContainer"></div>
         <button id="stopButton" onclick="stopReading()" style="display: none;">Stop</button>
 
+
     </div>
+    <button id="pauseButton" onclick="pauseReading()" style="display: none;">Пауза</button>
+
 
     <script src="app.js">
         

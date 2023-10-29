@@ -35,18 +35,19 @@ const toggleButton = document.getElementById('toggleButton');
 toggleButton.addEventListener('click', toggleMode);
 
 
-
 let currentWordIndex = 0;
 let intervalId;
 let isReading = false;
+let isPaused = false;
 
 function startReading() {
     const startButton = document.getElementById("startButton");
-    const stopButton = document.getElementById("stopButton");
-
+    const pauseButton = document.getElementById("pauseButton");
     const textInput = document.getElementById("textInput");
+    const textContainer = document.getElementById("textContainer");
     const speedRange = document.getElementById("speedRange");
     const boxInfo = document.querySelector('.box-info')
+
 
     if (!isReading) {
         const inputText = textInput.value.trim().split(' ');
@@ -55,45 +56,43 @@ function startReading() {
             alert("Введите текст для скорочтения.");
             return;
         }
-
-        startButton.style.display = "none";
-        stopButton.style.display = "block";
-        textInput.style.display = "none";
         boxInfo.style.display = "none"
+        startButton.style.display = "none";
+        pauseButton.style.display = "block";
+        textInput.style.display = "none";
         textContainer.style.display = "block";
         isReading = true;
+        isPaused = false;
 
         const speed = parseInt(speedRange.value);
 
         intervalId = setInterval(() => {
-            if (currentWordIndex < inputText.length) {
-                textContainer.textContent = inputText[currentWordIndex];
-                currentWordIndex++;
-            } else {
-                clearInterval(intervalId);
-                isReading = false;
-                startButton.style.display = "block";
-                textInput.style.display = "block";
-                boxInfo.style.display = "block"
-                stopButton.style.display = "none";
-
-                textContainer.style.display = "none";
-                currentWordIndex = 0;
+            if (!isPaused) {
+                if (currentWordIndex < inputText.length) {
+                    textContainer.textContent = inputText[currentWordIndex];
+                    currentWordIndex++;
+                } else {
+                    clearInterval(intervalId);
+                    isReading = false;
+                    startButton.style.display = "block";
+                    pauseButton.style.display = "none";
+                    stopButton.style.display = "none";
+                    textInput.style.display = "block";
+                    textContainer.style.display = "none";
+                    currentWordIndex = 0;
+                }
             }
         }, 1000 / speed);
     }
 }
 
-function stopReading() {
-    if (isReading) {
-        clearInterval(intervalId);
-        isReading = false;
-        boxInfo.style.display = 'block';
-        document.getElementById("startButton").style.display = "block";
-        document.getElementById("stopButton").style.display = "none";
-        document.getElementById("textInput").style.display = "block";
-        document.getElementById("textContainer").style.display = "none";
-        currentWordIndex = 0;
+function pauseReading() {
+    if (isReading && !isPaused) {
+        isPaused = true;
+        document.getElementById("pauseButton").textContent = "Пауза";
+    } else if (isReading && isPaused) {
+        isPaused = false;
+        document.getElementById("pauseButton").textContent = "Продолжить";
     }
 }
 
@@ -112,8 +111,6 @@ function loadTextFromFile() {
     });
 }
 
-
-
 const loadButton = document.getElementById("loadButton");
 loadButton.addEventListener("click", () => {
     const fileInput = document.getElementById("fileInput");
@@ -121,8 +118,3 @@ loadButton.addEventListener("click", () => {
 });
 
 loadTextFromFile();
-
-
-
-
-
