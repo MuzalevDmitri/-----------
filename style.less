@@ -5,6 +5,7 @@ body {
     margin: 0;
     font-family: 'Koulen', sans-serif;
     background: #000;
+    overflow: hidden;
   }
   
   .container {
@@ -34,6 +35,11 @@ body {
                 transform: rotate(180deg);
             }
         }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
     }
 
     .box-info {
@@ -41,6 +47,12 @@ body {
         justify-content: center;
         flex-direction: column;
         margin-top: 100px;
+        @media (min-width: 765px) {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+
         input {
             border: none;
             border-bottom: 1px solid #2F88FF;
@@ -56,7 +68,8 @@ body {
         }
         .speed {
             display: flex;
-            justify-content: space-between;
+            justify-content: start;
+            gap: 30px;
             margin-top: 15px;
             color: #fff;
             input {
@@ -150,9 +163,38 @@ body {
     margin: 0 auto;
     margin-top: 40px;
     display: none;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     
 }
+
+progress {
+    width: 100%;
+    background: #2F88FF;
+    height: 3px;
+    position: fixed;
+    bottom: 55px;
+    z-index: 1;
+    display: none;
+}
+
+progress[value] {
+    background: #2F88FF;
+    color: #2F88FF;
+}
+
+progress::-webkit-progress-value {
+    background: #2F88FF;
+    width: 100%; /* Цвет заполненной части (здесь синий, вы можете заменить на зеленый) */
+}
+
+ progress::-moz-progress-bar {
+    background: #2F88FF; /* Цвет заполненной части (здесь синий, вы можете заменить на зеленый) */
+    width: 100%; /* Цвет заполненной части (здесь синий, вы можете заменить на зеленый) */
+
+}
+
+
+ 
 
 

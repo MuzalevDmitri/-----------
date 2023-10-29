@@ -39,6 +39,7 @@ let currentWordIndex = 0;
 let intervalId;
 let isReading = false;
 let isPaused = false;
+ let progress = document.querySelector('#progressBar')
 
 function startReading() {
     const startButton = document.getElementById("startButton");
@@ -61,6 +62,7 @@ function startReading() {
         pauseButton.style.display = "block";
         textInput.style.display = "none";
         textContainer.style.display = "block";
+        progress.style.display = "block"
         isReading = true;
         isPaused = false;
 
@@ -70,6 +72,7 @@ function startReading() {
             if (!isPaused) {
                 if (currentWordIndex < inputText.length) {
                     textContainer.textContent = inputText[currentWordIndex];
+                    updateProgressBar(currentWordIndex, inputText.length);
                     currentWordIndex++;
                 } else {
                     clearInterval(intervalId);
@@ -79,6 +82,7 @@ function startReading() {
                     stopButton.style.display = "none";
                     textInput.style.display = "block";
                     textContainer.style.display = "none";
+                    progress.style.display = "none"
                     currentWordIndex = 0;
                 }
             }
@@ -89,10 +93,10 @@ function startReading() {
 function pauseReading() {
     if (isReading && !isPaused) {
         isPaused = true;
-        document.getElementById("pauseButton").textContent = "Пауза";
+        document.getElementById("pauseButton").textContent = "Продолжить";
     } else if (isReading && isPaused) {
         isPaused = false;
-        document.getElementById("pauseButton").textContent = "Продолжить";
+        document.getElementById("pauseButton").textContent = "Пауза";
     }
 }
 
@@ -116,5 +120,12 @@ loadButton.addEventListener("click", () => {
     const fileInput = document.getElementById("fileInput");
     fileInput.click();
 });
+
+function updateProgressBar(current, total) {
+    const progressBar = document.getElementById("progressBar");
+    progressBar.style.display = "block"
+    const progressValue = (current / total) * 100;
+    progressBar.value = progressValue;
+}
 
 loadTextFromFile();

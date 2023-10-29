@@ -11,6 +11,7 @@ body {
   margin: 0;
   font-family: 'Koulen', sans-serif;
   background: #000;
+  overflow: hidden;
 }
 .container {
   height: 932px;
@@ -37,11 +38,21 @@ body {
 .container .header .tgl.active {
   transform: rotate(180deg);
 }
+.container .header .logo {
+  display: flex;
+  align-items: center;
+}
 .container .box-info {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-top: 100px;
+}
+@media (min-width: 765px) {
+  .container .box-info {
+    max-width: 900px;
+    margin: 0 auto;
+  }
 }
 .container .box-info input {
   border: none;
@@ -57,7 +68,8 @@ body {
 }
 .container .box-info .speed {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
+  gap: 30px;
   margin-top: 15px;
   color: #fff;
 }
@@ -135,6 +147,30 @@ body {
   margin: 0 auto;
   margin-top: 40px;
   display: none;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+}
+progress {
+  width: 100%;
+  background: #2F88FF;
+  height: 3px;
+  position: fixed;
+  bottom: 55px;
+  z-index: 1;
+  display: none;
+}
+progress[value] {
+  background: #2F88FF;
+  color: #2F88FF;
+}
+progress::-webkit-progress-value {
+  background: #2F88FF;
+  width: 100%;
+  /* Цвет заполненной части (здесь синий, вы можете заменить на зеленый) */
+}
+progress::-moz-progress-bar {
+  background: #2F88FF;
+  /* Цвет заполненной части (здесь синий, вы можете заменить на зеленый) */
+  width: 100%;
+  /* Цвет заполненной части (здесь синий, вы можете заменить на зеленый) */
 }
